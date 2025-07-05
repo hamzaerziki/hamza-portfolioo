@@ -1,4 +1,3 @@
-
 // Language translations
 const translations = {
     en: {
@@ -42,6 +41,7 @@ let currentLanguage = 'en';
 let typewriterIndex = 0;
 let typewriterText = '';
 let isDeleting = false;
+let typewriterTimeout;
 
 // DOM Elements
 const hamburger = document.getElementById('hamburger');
@@ -136,8 +136,8 @@ function updateLanguage() {
     
     // Update language toggle appearance
     languageToggle.innerHTML = currentLanguage === 'en' 
-        ? '<span class="flag">🇫🇷</span> FR / <span class="flag">🇬🇧</span> EN'
-        : '<span class="flag">🇬🇧</span> EN / <span class="flag">🇫🇷</span> FR';
+        ? '<span class="flag">🇫🇷</span> FR'
+        : '<span class="flag">🇬🇧</span> EN';
 }
 
 function startTypewriter() {
@@ -166,13 +166,14 @@ function startTypewriter() {
             typeSpeed = 500;
         }
         
-        setTimeout(type, typeSpeed);
+        typewriterTimeout = setTimeout(type, typeSpeed);
     }
     
     type();
 }
 
 function restartTypewriter() {
+    clearTimeout(typewriterTimeout);
     typewriterText = '';
     isDeleting = false;
     startTypewriter();
@@ -254,7 +255,7 @@ function downloadCVFile() {
             <rect width="100%" height="100%" fill="#0A0A0A"/>
             <text x="400" y="100" text-anchor="middle" fill="#1EAEDB" font-size="40" font-family="Arial">Hamza Erziki</text>
             <text x="400" y="140" text-anchor="middle" fill="#9B87F5" font-size="20" font-family="Arial">Systems &amp; Network Engineer</text>
-            <text x="50" y="200" fill="#FFFFFF" font-size="16" font-family="Arial">Email: hamza.erziki@example.com</text>
+            <text x="50" y="200" fill="#FFFFFF" font-size="16" font-family="Arial">Email: hamzaerziki@outlook.com</text>
             <text x="50" y="230" fill="#FFFFFF" font-size="16" font-family="Arial">LinkedIn: linkedin.com/in/hamza-erziki</text>
             <text x="50" y="280" fill="#1EAEDB" font-size="18" font-family="Arial">Skills:</text>
             <text x="50" y="310" fill="#FFFFFF" font-size="14" font-family="Arial">• Network Security (F5, FortiGate, pfSense)</text>
@@ -317,7 +318,7 @@ console.log(`
 🚀 Welcome to Hamza Erziki's Portfolio!
 👨‍💻 Systems & Network Engineer
 🔧 Specialized in: Network Security, Virtualization, Monitoring
-📫 Contact: hamza.erziki@example.com
+📫 Contact: hamzaerziki@outlook.com
 🔗 LinkedIn: linkedin.com/in/hamza-erziki
 
 Built with ❤️ using HTML, CSS, and JavaScript

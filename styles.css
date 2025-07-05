@@ -1,4 +1,6 @@
 
+/* ... keep existing code (Reset and Base Styles through Navigation) */
+
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -152,11 +154,12 @@ body {
     height: 70px;
 }
 
+/* Updated logo size - made smaller */
 .nav-logo {
     display: flex;
     align-items: center;
-    gap: 8px;
-    font-size: 1.5rem;
+    gap: 6px;
+    font-size: 1.2rem;
     font-weight: 700;
     font-family: var(--font-secondary);
 }
@@ -171,8 +174,8 @@ body {
 }
 
 .server-icon {
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
     color: var(--primary-purple);
 }
 
@@ -188,6 +191,7 @@ body {
     transition: all var(--transition-medium);
     position: relative;
     font-weight: 500;
+    white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -212,9 +216,11 @@ body {
 .nav-actions {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 12px;
+    flex-wrap: nowrap;
 }
 
+/* Fixed language toggle */
 .language-toggle {
     background: var(--glass-bg);
     border: 1px solid var(--border-color);
@@ -224,6 +230,9 @@ body {
     cursor: pointer;
     transition: all var(--transition-medium);
     font-size: 0.85rem;
+    white-space: nowrap;
+    min-width: 60px;
+    text-align: center;
 }
 
 .language-toggle:hover {
@@ -245,6 +254,8 @@ body {
     background: var(--primary-blue);
     transition: all var(--transition-medium);
 }
+
+/* ... keep existing code (Hero Section through Footer) */
 
 /* Hero Section */
 .hero {
@@ -888,6 +899,15 @@ body {
         flex-direction: column;
         gap: 20px;
         margin-top: 30px;
+    }
+
+    .nav-actions .btn {
+        width: 200px;
+        justify-content: center;
+    }
+
+    .language-toggle {
+        width: 200px;
     }
 
     .hamburger {
