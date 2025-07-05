@@ -242,26 +242,10 @@ function closePhoneModal() {
 }
 
 function downloadCVFile() {
-    // Create a simple CV image download
+    // Use the uploaded CV image
     const link = document.createElement('a');
-    link.href = 'data:image/svg+xml;base64,' + btoa(`
-        <svg width="800" height="1000" xmlns="http://www.w3.org/2000/svg">
-            <rect width="100%" height="100%" fill="#0A0A0A"/>
-            <text x="400" y="100" text-anchor="middle" fill="#1EAEDB" font-size="40" font-family="Arial">Hamza Erziki</text>
-            <text x="400" y="140" text-anchor="middle" fill="#9B87F5" font-size="20" font-family="Arial">Systems &amp; Network Engineer</text>
-            <text x="50" y="200" fill="#FFFFFF" font-size="16" font-family="Arial">Email: hamzaerziki@outlook.com</text>
-            <text x="50" y="230" fill="#FFFFFF" font-size="16" font-family="Arial">LinkedIn: linkedin.com/in/hamza-erziki</text>
-            <text x="50" y="280" fill="#1EAEDB" font-size="18" font-family="Arial">Skills:</text>
-            <text x="50" y="310" fill="#FFFFFF" font-size="14" font-family="Arial">• Network Security (F5, FortiGate, pfSense)</text>
-            <text x="50" y="330" fill="#FFFFFF" font-size="14" font-family="Arial">• Virtualization (VMware, Docker)</text>
-            <text x="50" y="350" fill="#FFFFFF" font-size="14" font-family="Arial">• Monitoring (Zabbix, Grafana)</text>
-            <text x="50" y="370" fill="#FFFFFF" font-size="14" font-family="Arial">• System Administration</text>
-            <text x="50" y="420" fill="#1EAEDB" font-size="18" font-family="Arial">Education:</text>
-            <text x="50" y="450" fill="#FFFFFF" font-size="14" font-family="Arial">Student in Computer Systems and Networks</text>
-            <text x="50" y="470" fill="#FFFFFF" font-size="14" font-family="Arial">OFPPT Morocco</text>
-        </svg>
-    `);
-    link.download = 'Hamza_Erziki_CV.svg';
+    link.href = '/lovable-uploads/67651a44-1d5e-44bc-b784-fa1d736f0d32.png';
+    link.download = 'Hamza_Erziki_CV.png';
     link.click();
 }
 
