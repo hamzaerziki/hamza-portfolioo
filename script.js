@@ -8,13 +8,12 @@ const translations = {
         skillsTitle: "Technical Skills",
         certificatesTitle: "Professional Certificates",
         downloadCV: "Download CV",
-        viewCertificates: "View Certificates",
         viewProjects: "View Projects",
         aboutMe: "About Me",
         phone: "Phone",
         contactInfo: "Contact Information",
         phoneLabel: "Phone Number:",
-        copyright: "© 2024 Hamza Erziki. All rights reserved.",
+        copyright: "© 2025 Hamza Erziki. All rights reserved.",
         tagline: "Systems & Network Engineer"
     },
     fr: {
@@ -25,13 +24,12 @@ const translations = {
         skillsTitle: "Compétences Techniques", 
         certificatesTitle: "Certificats Professionnels",
         downloadCV: "Télécharger CV",
-        viewCertificates: "Voir Certificats",
         viewProjects: "Voir Projets",
         aboutMe: "À propos",
         phone: "Téléphone",
         contactInfo: "Informations de Contact",
         phoneLabel: "Numéro de Téléphone:",
-        copyright: "© 2024 Hamza Erziki. Tous droits réservés.",
+        copyright: "© 2025 Hamza Erziki. Tous droits réservés.",
         tagline: "Ingénieur Systèmes & Réseaux"
     }
 };
@@ -54,7 +52,6 @@ const footerPhone = document.getElementById('footerPhone');
 const phoneModalContainer = document.getElementById('phoneModalContainer');
 const closeModal = document.getElementById('closeModal');
 const downloadCV = document.getElementById('downloadCV');
-const viewCertificates = document.getElementById('viewCertificates');
 
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
@@ -92,9 +89,6 @@ function setupEventListeners() {
     
     // Download CV
     downloadCV.addEventListener('click', downloadCVFile);
-    
-    // View certificates
-    viewCertificates.addEventListener('click', scrollToCertificates);
     
     // Close mobile menu when clicking on nav links
     document.querySelectorAll('.nav-link').forEach(link => {
