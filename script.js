@@ -63,7 +63,6 @@ function initializeApp() {
     startTypewriter();
     setupScrollAnimations();
     setupNavbarScroll();
-    setupInteractiveElements();
 }
 
 function setupEventListeners() {
@@ -94,39 +93,6 @@ function setupEventListeners() {
     // Close mobile menu when clicking on nav links
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', closeMobileMenu);
-    });
-}
-
-function setupInteractiveElements() {
-    // Add hover effects to interactive buttons
-    document.querySelectorAll('.interactive-btn').forEach(btn => {
-        btn.addEventListener('mouseenter', function() {
-            this.style.transform = 'translateY(-3px) scale(1.05)';
-        });
-        
-        btn.addEventListener('mouseleave', function() {
-            this.style.transform = 'translateY(0) scale(1)';
-        });
-    });
-
-    // Add stagger animation to project cards
-    const projectCards = document.querySelectorAll('.project-card');
-    projectCards.forEach((card, index) => {
-        card.style.animationDelay = `${index * 0.1}s`;
-    });
-
-    // Add parallax effect to floating icons
-    window.addEventListener('scroll', throttle(parallaxEffect, 16));
-}
-
-function parallaxEffect() {
-    const scrolled = window.pageYOffset;
-    const parallaxElements = document.querySelectorAll('.floating-icon');
-    
-    parallaxElements.forEach((element, index) => {
-        const speed = 0.2 + (index * 0.1);
-        const yPos = -(scrolled * speed);
-        element.style.transform = `translate3d(0, ${yPos}px, 0)`;
     });
 }
 
@@ -217,28 +183,23 @@ function setupScrollAnimations() {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                // Add stagger effect for cards
-                if (entry.target.classList.contains('interactive-card')) {
-                    const cards = Array.from(entry.target.parentElement.children);
-                    const index = cards.indexOf(entry.target);
-                    entry.target.style.transitionDelay = `${index * 0.1}s`;
-                }
             }
         });
     }, observerOptions);
     
     // Add animation classes and observe elements
-    document.querySelectorAll('.project-card, .skill-category, .certificate-card, .interactive-card').forEach((el) => {
+    document.querySelectorAll('.project-card, .skill-category, .certificate-card').forEach((el, index) => {
         el.classList.add('fade-in');
+        el.style.transitionDelay = `${index * 0.1}s`;
         observer.observe(el);
     });
     
-    document.querySelectorAll('.about-image-container').forEach(el => {
+    document.querySelectorAll('.about-image').forEach(el => {
         el.classList.add('slide-in-left');
         observer.observe(el);
     });
     
-    document.querySelectorAll('.about-content-wrapper').forEach(el => {
+    document.querySelectorAll('.about-text').forEach(el => {
         el.classList.add('slide-in-right');
         observer.observe(el);
     });
@@ -283,7 +244,7 @@ function closePhoneModal() {
 function downloadCVFile() {
     // Use the uploaded CV image
     const link = document.createElement('a');
-    link.href = '/lovable-uploads/f5149a31-bfef-43af-9532-7b0280827c73.png';
+    link.href = '/lovable-uploads/67651a44-1d5e-44bc-b784-fa1d736f0d32.png';
     link.download = 'Hamza_Erziki_CV.png';
     link.click();
 }
