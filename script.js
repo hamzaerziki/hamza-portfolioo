@@ -63,6 +63,7 @@ function initializeApp() {
     startTypewriter();
     setupScrollAnimations();
     setupNavbarScroll();
+    setupInteractiveEffects();
 }
 
 function setupEventListeners() {
@@ -187,7 +188,7 @@ function setupScrollAnimations() {
         });
     }, observerOptions);
     
-    // Add animation classes and observe elements
+    // Add animation classes and observe elements with staggered delays
     document.querySelectorAll('.project-card, .skill-category, .certificate-card').forEach((el, index) => {
         el.classList.add('fade-in');
         el.style.transitionDelay = `${index * 0.1}s`;
@@ -199,10 +200,20 @@ function setupScrollAnimations() {
         observer.observe(el);
     });
     
-    document.querySelectorAll('.about-text').forEach(el => {
+    document.querySelectorAll('.about-text-container').forEach(el => {
         el.classList.add('slide-in-right');
         observer.observe(el);
     });
+
+    // Parallax effect for hero background
+    window.addEventListener('scroll', throttle(() => {
+        const scrolled = window.pageYOffset;
+        const rate = scrolled * -0.5;
+        const heroBackground = document.querySelector('.hero-bg');
+        if (heroBackground) {
+            heroBackground.style.transform = `translateY(${rate}px)`;
+        }
+    }, 16));
 }
 
 function setupNavbarScroll() {
@@ -213,6 +224,43 @@ function setupNavbarScroll() {
             navbar.classList.remove('scrolled');
         }
     });
+}
+
+function setupInteractiveEffects() {
+    // Add hover effects to project cards
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // Add ripple effect to buttons
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', createRipple);
+    });
+}
+
+function createRipple(event) {
+    const button = event.currentTarget;
+    const circle = document.createElement('span');
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${event.clientX - button.offsetLeft - radius}px`;
+    circle.style.top = `${event.clientY - button.offsetTop - radius}px`;
+    circle.classList.add('ripple');
+
+    const ripple = button.getElementsByClassName('ripple')[0];
+    if (ripple) {
+        ripple.remove();
+    }
+
+    button.appendChild(circle);
 }
 
 function smoothScroll(e) {
@@ -242,11 +290,25 @@ function closePhoneModal() {
 }
 
 function downloadCVFile() {
-    // Use the uploaded CV image
+    // Create a temporary link element
     const link = document.createElement('a');
-    link.href = '/lovable-uploads/67651a44-1d5e-44bc-b784-fa1d736f0d32.png';
+    link.href = '/lovable-uploads/f5149a31-bfef-43af-9532-7b0280827c73.png';
     link.download = 'Hamza_Erziki_CV.png';
+    
+    // Append to body, click, and remove
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
+    
+    // Show feedback to user
+    const originalText = downloadCV.textContent;
+    downloadCV.textContent = 'Downloaded!';
+    downloadCV.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+    
+    setTimeout(() => {
+        downloadCV.textContent = originalText;
+        downloadCV.style.background = '';
+    }, 2000);
 }
 
 function scrollToCertificates() {
