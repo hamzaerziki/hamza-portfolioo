@@ -455,7 +455,7 @@ body {
     60% { transform: translateY(-5px) rotate(45deg); }
 }
 
-/* Enhanced About Section */
+/* Professional About Section */
 .about {
     padding: var(--section-padding);
     background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
@@ -463,113 +463,58 @@ body {
 
 .about-content {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
-    gap: 60px;
-    align-items: center;
+    grid-template-columns: 350px 1fr;
+    gap: 50px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .about-image {
+    position: relative;
     display: flex;
     justify-content: center;
-    position: relative;
 }
 
 .image-frame {
     position: relative;
-    width: 280px;
-    height: 280px;
-    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    overflow: hidden;
     background: linear-gradient(45deg, var(--primary-blue), var(--primary-purple));
-    padding: 4px;
-    overflow: visible;
+    padding: 3px;
+    box-shadow: 0 20px 60px rgba(30, 174, 219, 0.2);
 }
 
 .image-frame img {
     width: 100%;
     height: 100%;
-    border-radius: 50%;
+    border-radius: 17px;
     object-fit: cover;
-    transition: transform var(--transition-medium);
+    transition: transform 0.3s ease;
 }
 
 .image-frame:hover img {
-    transform: scale(1.05);
+    transform: scale(1.02);
 }
 
-/* Floating Icons Animation */
-.floating-icons {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.floating-icon {
-    position: absolute;
-    width: 35px;
-    height: 35px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--border-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--primary-blue);
-    animation: floatAround 6s ease-in-out infinite;
-    animation-delay: var(--delay);
-    transition: all 0.3s ease;
-}
-
-.floating-icon:hover {
-    transform: scale(1.15);
-    background: rgba(30, 174, 219, 0.1);
-    border-color: var(--primary-blue);
-}
-
-.floating-icon svg {
-    width: 20px;
-    height: 20px;
-}
-
-.floating-icon:nth-child(1) {
-    top: 10%;
-    right: -20px;
-}
-
-.floating-icon:nth-child(2) {
-    bottom: 20%;
-    left: -20px;
-}
-
-.floating-icon:nth-child(3) {
-    top: 50%;
-    right: -30px;
-}
-
-@keyframes floatAround {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    25% { transform: translateY(-15px) rotate(90deg); }
-    50% { transform: translateY(-10px) rotate(180deg); }
-    75% { transform: translateY(-20px) rotate(270deg); }
-}
-
-/* Creative About Card */
+/* Professional Card Design */
 .about-text-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .about-card {
     background: var(--card-bg);
-    backdrop-filter: blur(20px);
     border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 35px;
+    border-radius: 15px;
+    padding: 40px;
     position: relative;
     overflow: hidden;
-    max-width: 600px;
-    transition: all var(--transition-medium);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .about-card::before {
@@ -578,40 +523,36 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple), var(--primary-blue));
-    background-size: 200% 100%;
-    animation: gradientShift 3s ease-in-out infinite;
-}
-
-@keyframes gradientShift {
-    0%, 100% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-blue), var(--primary-purple));
 }
 
 .about-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(30, 174, 219, 0.15);
-    border-color: var(--primary-blue);
+    box-shadow: 0 20px 50px rgba(30, 174, 219, 0.15);
+    border-color: rgba(30, 174, 219, 0.3);
 }
 
 .card-header {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 20px;
 }
 
 .status-badge {
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(34, 197, 94, 0.1);
+    background: rgba(34, 197, 94, 0.15);
     border: 1px solid rgba(34, 197, 94, 0.3);
-    padding: 8px 16px;
-    border-radius: 20px;
+    padding: 10px 16px;
+    border-radius: 25px;
     font-size: 0.85rem;
     color: #22c55e;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .status-dot {
@@ -622,55 +563,75 @@ body {
     animation: pulse 2s ease-in-out infinite;
 }
 
-@keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.7; transform: scale(1.2); }
-}
-
 .about-text {
     color: var(--text-secondary);
-    font-size: 0.95rem;
-    line-height: 1.6;
-    text-align: justify;
+    font-size: 1rem;
+    line-height: 1.8;
+    font-family: 'Inter', sans-serif;
 }
 
 .about-text p {
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     transition: all 0.3s ease;
+    text-align: left;
     opacity: 0.9;
+}
+
+.about-text p:first-child {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    font-weight: 500;
 }
 
 .about-text p:hover {
     color: var(--text-primary);
     opacity: 1;
-    transform: translateX(5px);
 }
 
 .skill-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 25px;
-    padding-top: 20px;
+    gap: 12px;
+    margin-top: 30px;
+    padding-top: 25px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .skill-tag {
-    background: var(--glass-bg);
-    border: 1px solid var(--border-color);
-    padding: 8px 16px;
-    border-radius: 20px;
+    background: rgba(30, 174, 219, 0.1);
+    border: 1px solid rgba(30, 174, 219, 0.3);
+    padding: 10px 18px;
+    border-radius: 25px;
     font-size: 0.85rem;
     color: var(--primary-blue);
-    font-weight: 500;
-    transition: all var(--transition-medium);
+    font-weight: 600;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .skill-tag:hover {
-    background: rgba(30, 174, 219, 0.1);
+    background: rgba(30, 174, 219, 0.2);
     border-color: var(--primary-blue);
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(30, 174, 219, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .image-frame {
+        width: 250px;
+        height: 250px;
+    }
+    
+    .about-card {
+        padding: 30px 20px;
+    }
 }
 
 /* Enhanced Projects Section */
