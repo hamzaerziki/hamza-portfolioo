@@ -292,7 +292,7 @@ function closePhoneModal() {
 function downloadCVFile() {
     // Create a temporary link element
     const link = document.createElement('a');
-    link.href = '/lovable-uploads/f5149a31-bfef-43af-9532-7b0280827c73.png';
+    link.href = '/lovable-uploads/hamza-cv.png';
     link.download = 'Hamza_Erziki_CV.png';
     
     // Append to body, click, and remove
@@ -300,14 +300,21 @@ function downloadCVFile() {
     link.click();
     document.body.removeChild(link);
     
-    // Show feedback to user
+    // Show feedback to user with smooth animation
     const originalText = downloadCV.textContent;
-    downloadCV.textContent = 'Downloaded!';
+    downloadCV.style.transform = 'scale(0.95)';
+    downloadCV.textContent = '✓ Downloaded!';
     downloadCV.style.background = 'linear-gradient(45deg, #22c55e, #16a34a)';
+    downloadCV.style.transition = 'all 0.3s ease';
+    
+    setTimeout(() => {
+        downloadCV.style.transform = 'scale(1)';
+    }, 100);
     
     setTimeout(() => {
         downloadCV.textContent = originalText;
         downloadCV.style.background = '';
+        downloadCV.style.transform = '';
     }, 2000);
 }
 

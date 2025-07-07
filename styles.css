@@ -506,8 +506,8 @@ body {
 
 .floating-icon {
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
     border: 1px solid var(--border-color);
@@ -516,8 +516,15 @@ body {
     align-items: center;
     justify-content: center;
     color: var(--primary-blue);
-    animation: floatAround 8s ease-in-out infinite;
+    animation: floatAround 6s ease-in-out infinite;
     animation-delay: var(--delay);
+    transition: all 0.3s ease;
+}
+
+.floating-icon:hover {
+    transform: scale(1.15);
+    background: rgba(30, 174, 219, 0.1);
+    border-color: var(--primary-blue);
 }
 
 .floating-icon svg {
@@ -622,17 +629,21 @@ body {
 
 .about-text {
     color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    text-align: justify;
 }
 
 .about-text p {
-    margin-bottom: 18px;
-    transition: color var(--transition-medium);
+    margin-bottom: 16px;
+    transition: all 0.3s ease;
+    opacity: 0.9;
 }
 
 .about-text p:hover {
     color: var(--text-primary);
+    opacity: 1;
+    transform: translateX(5px);
 }
 
 .skill-tags {
