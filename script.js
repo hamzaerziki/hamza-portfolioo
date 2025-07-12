@@ -272,22 +272,11 @@ function smoothScroll(e) {
     const targetSection = document.querySelector(targetId);
     
     if (targetSection) {
-        const navbarHeight = navbar ? navbar.offsetHeight : 70;
-        const offsetTop = targetSection.offsetTop - navbarHeight - 20;
-        
-        // Add smooth transition effect
-        targetSection.style.scrollMarginTop = `${navbarHeight + 20}px`;
-        
+        const offsetTop = targetSection.offsetTop - 70;
         window.scrollTo({
             top: offsetTop,
             behavior: 'smooth'
         });
-        
-        // Highlight the target section briefly
-        targetSection.classList.add('section-highlight');
-        setTimeout(() => {
-            targetSection.classList.remove('section-highlight');
-        }, 2000);
     }
     
     closeMobileMenu();
