@@ -370,43 +370,45 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 5px;
+    gap: 8px;
     font-family: var(--font-tertiary);
     position: relative;
 }
 
 .typewriter {
-    background: linear-gradient(45deg, var(--primary-blue), var(--primary-purple));
+    background: linear-gradient(135deg, #00d4ff, #ff00ff, #00ff88);
+    background-size: 300% 300%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    font-weight: 600;
-    padding-right: 5px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 1px;
     position: relative;
-    text-shadow: 0 0 20px rgba(30, 174, 219, 0.3);
-    animation: glow 2s ease-in-out infinite alternate;
+    padding: 8px 16px;
+    border-radius: 8px;
+    animation: gradientShift 4s ease infinite;
 }
 
 .typewriter::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    background: linear-gradient(45deg, var(--primary-blue), var(--primary-purple));
-    opacity: 0.1;
-    border-radius: 4px;
-    filter: blur(8px);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, #00d4ff20, #ff00ff20, #00ff8820);
+    background-size: 300% 300%;
+    border-radius: 8px;
+    animation: gradientShift 4s ease infinite;
     z-index: -1;
-    animation: pulse 3s ease-in-out infinite;
 }
 
 .cursor {
-    color: var(--primary-blue);
-    font-weight: 100;
-    animation: blink 1s infinite, colorShift 3s ease-in-out infinite;
-    text-shadow: 0 0 10px var(--primary-blue);
+    color: #00ff88;
+    font-weight: 300;
+    font-size: 1.8rem;
+    animation: blink 1s infinite, neonGlow 2s ease-in-out infinite;
 }
 
 @keyframes blink {
@@ -414,25 +416,21 @@ body {
     51%, 100% { opacity: 0; }
 }
 
-@keyframes glow {
-    0% { 
-        filter: brightness(1);
-        text-shadow: 0 0 20px rgba(30, 174, 219, 0.3);
-    }
-    100% { 
-        filter: brightness(1.2);
-        text-shadow: 0 0 30px rgba(30, 174, 219, 0.5), 0 0 40px rgba(155, 135, 245, 0.3);
-    }
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
-@keyframes colorShift {
-    0%, 100% { color: var(--primary-blue); text-shadow: 0 0 10px var(--primary-blue); }
-    50% { color: var(--primary-purple); text-shadow: 0 0 10px var(--primary-purple); }
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); opacity: 0.1; }
-    50% { transform: scale(1.05); opacity: 0.2; }
+@keyframes neonGlow {
+    0%, 100% { 
+        color: #00ff88;
+        text-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88;
+    }
+    50% { 
+        color: #00d4ff;
+        text-shadow: 0 0 5px #00d4ff, 0 0 10px #00d4ff;
+    }
 }
 
 .hero-actions {
@@ -1244,8 +1242,8 @@ body {
 /* Enhanced Animation Classes for Scroll Effects */
 .fade-in {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all var(--transition-slow);
+    transform: translateY(15px);
+    transition: all 0.4s ease;
 }
 
 .fade-in.visible {
@@ -1255,8 +1253,8 @@ body {
 
 .slide-in-left {
     opacity: 0;
-    transform: translateX(-50px);
-    transition: all var(--transition-slow);
+    transform: translateX(-20px);
+    transition: all 0.4s ease;
 }
 
 .slide-in-left.visible {
@@ -1266,8 +1264,8 @@ body {
 
 .slide-in-right {
     opacity: 0;
-    transform: translateX(50px);
-    transition: all var(--transition-slow);
+    transform: translateX(20px);
+    transition: all 0.4s ease;
 }
 
 .slide-in-right.visible {

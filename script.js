@@ -295,7 +295,7 @@ function closePhoneModal() {
 function downloadCVFile() {
     // Create a temporary link element
     const link = document.createElement('a');
-    link.href = '/lovable-uploads/hamza-cv.png';
+    link.href = '/lovable-uploads/d79849e5-41a6-4ff4-b749-0a20e9070776.png';
     link.download = 'Hamza_Erziki_CV.png';
     
     // Append to body, click, and remove
